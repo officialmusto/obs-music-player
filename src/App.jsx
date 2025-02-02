@@ -1,7 +1,5 @@
 // IMPORTS
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { React, useState } from 'react'
 import './App.css'
 
 
@@ -10,11 +8,10 @@ import './App.css'
 
 
 // PAGES
-import Landing from './pages/landing/Landing'
+import Landing from './pages/Landing/Landing'
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

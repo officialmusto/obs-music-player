@@ -1,26 +1,102 @@
-button {
-  position: relative;
-  padding: 14px 28px;
+body {
+  background-color: #1ED760;
+}
+
+/* Full Page Centering */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 29px;
+  height: 70vh;
+  width: 100vh;
+  background-color: #141414;
+}
+
+/* Two-Column Profile Box */
+.profileBox {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  border-radius: 29px;
+  overflow: hidden;
+  box-shadow: 0px 10px 30px #00000080;
+}
+
+/* Left-side Branding/Visual */
+.visual {
+  width: 40%;
+  background: linear-gradient(135deg, #1D1D1D 20%, #282828 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  color: white;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+/* Right-side Profile Form */
+.formWrapper {
+  width: 60%;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.formWrapper h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+  display: block;
+  width: 100%;
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #cfcfcf;
-  box-shadow: 0px 10px 10px #1d1d1d;
+  border-radius: 6px;
+  background: #333;
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  outline: 2px solid #1ED760;
+}
+
+/* Button */
+.createButton {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #1ED760;
   color: black;
   font-size: 1rem;
   font-weight: bold;
+  cursor: pointer;
   transition: 0.3s;
-}
-
-button::after {
-  content: "";
-  position: absolute;
-  top: -25px; 
-  left: -25px;
-  right: -25px;
-  bottom: -25px; 
-  background: transparent;
-  pointer-events: auto;
 }
 
 button:hover {
@@ -28,5 +104,28 @@ button:hover {
   box-shadow: 0px 0px 10px #1ED760;
 }
 
-/* ----------------- */
+/* Message Box */
+.message {
+  color: #ff5555;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profileBox {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .visual {
+    width: 100%;
+    height: 150px;
+  }
+
+  .formWrapper {
+    width: 100%;
+    padding: 20px;
+  }
+}

@@ -27,23 +27,31 @@ const CreateProfile = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.formWrapper}>
-        <h2>Create Profile</h2>
-        {message && <p className={styles.message}>{message}</p>}
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+      <div className={styles.profileBox}>
+        
+      {/* BRANDING VISUAL */}
+        <div className={styles.visual}> 
+          <h1 className={styles.brand}>OBS Music Player</h1>
+        </div>
 
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <div className={styles.formWrapper}>
+          <h2>Create Profile</h2>
+          {message && <p className={styles.message}>{message}</p>}
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <label>Name:</label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
 
-          <label>Photo URL:</label>
-          <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
+            <label>Email:</label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-          <div className={styles.createButton}>
-            <button type="submit">Create Profile</button>
-          </div>
-        </form>
+            <label>Photo URL:</label>
+            <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
+
+            <div className={styles.createButton}>
+              <button type="submit">Create Profile</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )

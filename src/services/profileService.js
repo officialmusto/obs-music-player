@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/profiles"
+const API_URL = "http://localhost:5000/api/profile/create"
 
 export const createProfile = async (profileData, token) => {
   const response = await fetch(API_URL, {

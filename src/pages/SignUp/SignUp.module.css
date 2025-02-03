@@ -11,6 +11,17 @@ body {
   height: 70vh;
   width: 100vh;
   background-color: #d5d5d5;
+  background-image: url('../../assets/landing-picture.jpg');
+
+}
+
+.videoBackground {
+  position: absolute;
+  margin: 25px;
+  border-radius: 25px;
+  height: 100%;
+  width:  30%;
+  z-index: -1;
 }
 
 /* Two-Column Profile Box */
@@ -30,6 +41,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 10px 30px #12121280;
+  background: #00000066;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .brand {
@@ -48,12 +63,14 @@ body {
   align-items: center;
   align-content: center;
   padding: 30px;
+ 
 }
 
 .formWrapper h2 {
   font-size: 2rem;
   color: white;
   margin-bottom: 20px;
+  
 }
 
 /* Labels */
@@ -61,7 +78,9 @@ label {
   display: block;
   width: 100%;
   color: #d5d5d5;
-  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
   margin-bottom: 5px;
 }
 
@@ -71,7 +90,7 @@ input {
   max-width: 350px;
   padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 13px;
   background: #333;
   color: d5d5d5;
   font-size: 1rem;
@@ -92,9 +111,9 @@ button {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 26px;
   background: #d5d5d5;
-  color: black;
+  color: #121212;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -111,7 +130,8 @@ form {
 
 button:hover {
   background: #21e065;
-  box-shadow: 0px 0px 10px #1ED760;
+  box-shadow: 0px 05px 20px #1ED760;
+  color: #d5d5d5;
 }
 
 /* Message Box */

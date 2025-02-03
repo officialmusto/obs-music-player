@@ -2,6 +2,9 @@ import { useState } from "react"
 import { createProfile } from "../../services/profileService"
 import styles from "./SignUp.module.css"
 
+// --- ASSETS ---
+import brandingVideo from "../../assets/branding-createProfile-video.mp4"  
+
 const CreateProfile = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -27,6 +30,10 @@ const CreateProfile = () => {
 
   return (
     <div className={styles.container}>
+      <video className={styles.videoBackground} autoPlay muted loop>
+        <source src={brandingVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className={styles.profileBox}>
         
       {/* BRANDING VISUAL */}

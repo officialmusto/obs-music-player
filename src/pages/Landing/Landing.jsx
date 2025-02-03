@@ -1,7 +1,9 @@
-// Landing page for the site.
+// Landing page for the site
+
 
 // --- IMPORTS ---
 import React from 'react'
+
 
 // --- COMPONENTS ---
 
@@ -10,7 +12,6 @@ import React from 'react'
 
 import SpotifyPlayer from '../SpotifyPlayer/SpotifyPlayer'
 import CiderPlayer from '../CiderPlayer/CiderPlayer'
-import SignUp from '../SignUp/SignUp'
 
 // --- CSS ---
 import styles from './Landing.module.css'
@@ -19,10 +20,8 @@ import styles from './Landing.module.css'
 const Landing = () => {
   return (
     <>
-    <SignUp />
+    
     <div className={styles.title}>Landing Page.</div>
-    {/* <SpotifyPlayer />
-    <CiderPlayer /> */}
     </>
   )
 }

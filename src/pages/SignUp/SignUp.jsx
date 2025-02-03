@@ -69,13 +69,13 @@ const CreateProfile = () => {
           )}
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            <label>Name:</label>
+            <label>name:</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
 
-            <label>Email:</label>
+            <label>email:</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-            <label>Photo URL:</label>
+            <label>photo url:</label>
             <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
 
             <div className={styles.createButton}>
@@ -89,3 +89,14 @@ const CreateProfile = () => {
 }
 
 export default CreateProfile
+
+
+// --- CSS ---
+
+// SIP selective intervention program
+// NEVER CONVICTED
+
+// CHARGED? YES
+// CONVICTED? NO
+// DISMISSED AND SEALED CHARGES
+// DISMSISS  

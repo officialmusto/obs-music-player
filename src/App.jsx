@@ -1,11 +1,11 @@
 // IMPORTS
 import { React, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom"
 import './App.css'
 
 
 // COMPONENTS
-
+import NavBar from './components/NavBar/NavBar'
 
 // SERVICES
 
@@ -13,14 +13,14 @@ import './App.css'
 
 // PAGES
 import Landing from './pages/Landing/Landing'
-import CreateProfile from './pages/SignUp/SignUp'
 
 function App() {
 
   return (
     <Router>
+      <NavBar />
       <Routes>
-        <Route path="/Landing" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
         </Routes>
     </Router>
   )

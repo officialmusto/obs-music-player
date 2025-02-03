@@ -1,9 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createProfile } from "../../services/profileService"
+import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
 import styles from "./SignUp.module.css"
-
-// --- ASSETS ---
-import brandingVideo from "../../assets/branding-createProfile-video.mp4"  
 
 const CreateProfile = () => {
   const [name, setName] = useState("")
@@ -11,6 +9,20 @@ const CreateProfile = () => {
   const [photo, setPhoto] = useState("")
   const [message, setMessage] = useState("")
   const [messageType, setMessageType] = useState("") // "success" or "error"
+
+  // Fetch Twitch user data if logged in
+  useEffect(() => {
+    const fetchTwitchProfile = async () => {
+      const userData = await getTwitchUserData()
+      if (userData && userData.data) {
+        setName(userData.data[0].display_name)
+        setEmail(userData.data[0].email)
+        setPhoto(userData.data[0].profile_image_url)
+      }
+    }
+
+    fetchTwitchProfile()
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,11 +33,10 @@ const CreateProfile = () => {
       const response = await createProfile(profileData, token)
       if (response.error) {
         setMessage(`❌ ${response.error}`)
-        setMessageType("error") // Set message type to error
-        
+        setMessageType("error") 
       } else {
         setMessage("✅ Profile created successfully!")
-        setMessageType("success") // Set message type to success
+        setMessageType("success")
       }
 
       setTimeout(() => {
@@ -44,16 +55,9 @@ const CreateProfile = () => {
     }
   }
 
-
   return (
     <div className={styles.container}>
-      <video className={styles.videoBackground} autoPlay muted loop>
-        <source src={brandingVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
       <div className={styles.profileBox}>
-        {/* BRANDING VISUAL */}
         <div className={styles.visual}> 
           <h1 className={styles.brand}>OBS Music Player</h1>
         </div>
@@ -61,7 +65,6 @@ const CreateProfile = () => {
         <div className={styles.formWrapper}>
           <h2>Create Profile</h2>
           
-          {/* Conditionally Render Success/Error Message */}
           {message && (
             <p className={`${styles.message} ${messageType === "success" ? styles.successMessage : styles.errorMessage}`}>
               {message}
@@ -69,19 +72,23 @@ const CreateProfile = () => {
           )}
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            <label>name:</label>
+            <label>Name:</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
 
-            <label>email:</label>
+            <label>Email:</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-            <label>photo url:</label>
+            <label>Photo URL:</label>
             <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
 
             <div className={styles.createButton}>
               <button type="submit">Create Profile</button>
             </div>
           </form>
+
+          <div>
+            <button onClick={loginWithTwitch}>Login with Twitch</button>
+          </div>
         </div>
       </div>
     </div>
@@ -89,14 +96,3 @@ const CreateProfile = () => {
 }
 
 export default CreateProfile
-
-
-// --- CSS ---
-
-// SIP selective intervention program
-// NEVER CONVICTED
-
-// CHARGED? YES
-// CONVICTED? NO
-// DISMISSED AND SEALED CHARGES
-// DISMSISS  

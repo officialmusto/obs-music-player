@@ -46,6 +46,8 @@ const LogIn = ({ handleAuthEvt }) => {
     return !(email && password)
   }
 
+
+
   return (
     <main className={styles.container}>
       <section>

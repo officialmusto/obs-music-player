@@ -18,6 +18,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<CreateProfile />} />
+        {/* <Route path "/" element={<Landing />} /> */}
         </Routes>
     </Router>
   )

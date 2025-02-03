@@ -1,0 +1,32 @@
+button {
+  position: relative;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #cfcfcf;
+  box-shadow: 0px 10px 10px #1d1d1d;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: -25px; 
+  left: -25px;
+  right: -25px;
+  bottom: -25px; 
+  background: transparent;
+  pointer-events: auto;
+}
+
+button:hover {
+  background: #21e065;
+  box-shadow: 0px 0px 10px #1ED760;
+}
+
+/* ----------------- */
+

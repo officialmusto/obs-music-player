@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createProfile } from "../../services/profileService"
+import styles from "./SignUp.module.css"
 
 const CreateProfile = () => {
   const [name, setName] = useState("")
@@ -9,42 +10,41 @@ const CreateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const token = localStorage.getItem("token")  // Get JWT token from local storage
+    const token = localStorage.getItem("token")
     const profileData = { name, email, photo }
 
     try {
       const response = await createProfile(profileData, token)
-
       if (response.error) {
         setMessage(`Error: ${response.error}`)
       } else {
-        setMessage("Profile created successfully!")
+        setMessage("✅ Profile created successfully!")
       }
     } catch (error) {
-      setMessage("An error occurred. Please try again.")
+      setMessage("⚠️ An error occurred. Please try again.")
     }
   }
 
   return (
-    <div>
-      <h2>Create Profile</h2>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <h2>Create Profile</h2>
+        {message && <p className={styles.message}>{message}</p>}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <label>Name:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-        </label>
-        <label>
-          Email:
+
+          <label>Email:</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Photo URL:
+
+          <label>Photo URL:</label>
           <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
-        </label>
-        <button type="submit">Create Profile</button>
-      </form>
+
+          <div className={styles.createButton}>
+            <button type="submit">Create Profile</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

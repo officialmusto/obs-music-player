@@ -1,7 +1,11 @@
-const API_URL = "http://localhost:5000/api/profile/create"
+// ---- SERVICES ----
+import * as tokenService from "./tokenService"
+
+const BASE_URL = `${import.meta.env.VITE_BACKEND_SERVER_URL}/api/profile/create`
+
 
 export const createProfile = async (profileData, token) => {
-  const response = await fetch(API_URL, {
+  const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

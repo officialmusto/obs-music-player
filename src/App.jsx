@@ -7,6 +7,9 @@ import './App.css'
 // COMPONENTS
 
 
+// SERVICES
+
+
 
 // PAGES
 import Landing from './pages/Landing/Landing'
@@ -17,8 +20,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CreateProfile />} />
-        {/* <Route path "/" element={<Landing />} /> */}
+        <Route path="/Landing" element={<Landing />} />
         </Routes>
     </Router>
   )

@@ -10,19 +10,7 @@ const CreateProfile = () => {
   const [message, setMessage] = useState("")
   const [messageType, setMessageType] = useState("") // "success" or "error"
 
-  // Fetch Twitch user data if logged in
-  useEffect(() => {
-    const fetchTwitchProfile = async () => {
-      const userData = await getTwitchUserData()
-      if (userData && userData.data) {
-        setName(userData.data[0].display_name)
-        setEmail(userData.data[0].email)
-        setPhoto(userData.data[0].profile_image_url)
-      }
-    }
 
-    fetchTwitchProfile()
-  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -87,7 +75,7 @@ const CreateProfile = () => {
           </form>
 
           <div>
-            <button onClick={loginWithTwitch}>Login with Twitch</button>
+            <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
           </div>
         </div>
       </div>

@@ -20,7 +20,6 @@ import styles from './Landing.module.css'
 const Landing = () => {
   return (
     <>
-    
     <div className={styles.title}>Landing Page.</div>
     </>
   )

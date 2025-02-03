@@ -1,10 +1,11 @@
 
 // NPM MODULES
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 // SERVICES
 import * as authService from '../../services/authService'
+import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
 
 // ASSETS
 
@@ -19,6 +20,20 @@ const LogIn = ({ handleAuthEvt }) => {
     email: '',
     password: '',
   })
+
+    // Fetch Twitch user data if logged in
+    useEffect(() => {
+      const fetchTwitchProfile = async () => {
+        const userData = await getTwitchUserData()
+        if (userData && userData.data) {
+          setName(userData.data[0].display_name)
+          setEmail(userData.data[0].email)
+          setPhoto(userData.data[0].profile_image_url)
+        }
+      }
+  
+      fetchTwitchProfile()
+    }, [])
 
   const handleChange = evt => {
     setMessage('')
@@ -79,6 +94,7 @@ const LogIn = ({ handleAuthEvt }) => {
             <Link to="/">CANCEL</Link>
           </div>
         </form>
+        <button onClick={loginWithTwitch}>Login with Twitch</button>
       </section>
     </main>
   )

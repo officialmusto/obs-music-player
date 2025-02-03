@@ -13,7 +13,6 @@ body {
   width: 100vh;
   background-color: #d5d5d5;
   background-image: url('../../assets/landing-picture.jpg');
-
 }
 
 .videoBackground {
@@ -28,50 +27,60 @@ body {
 /* Two-Column Profile Box */
 .profileBox {
   display: flex;
-  width: 800px;
-  height: 500px;
+  flex-direction: column;
+  width: 400px;
+  height: auto;
   border-radius: 29px;
   overflow: hidden;
   box-shadow: 0px 10px 30px #00000080;
+  background: #222;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title Box */
+.profileBox h2 {
+  font-size: 2rem;
+  color: #d3d3d3;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
 
 /* Left-side Branding/Visual */
 .visual {
-  width: 40%;
-  background: linear-gradient(135deg, #1D1D1D 20%, #282828 80%);
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 10px 30px #12121280;
-  background: #00000066;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
 }
 
 .brand {
-  color: d5d5d5;
   font-size: 2.3rem;
   font-weight: bold;
+  color: #21e065;
+  text-shadow: 0px 05px 40px #1ED760;
+  margin: 20px;
 }
 
 /* Right-side Profile Form */
 .formWrapper {
-  width: 60%;
-  background: #222;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
   padding: 30px;
- 
+  gap: 15px; /* Ensures spacing between buttons and inputs */
 }
 
 .formWrapper h2 {
   font-size: 2rem;
   color: #d3d3d3;
   margin-bottom: 20px;
-  
+  text-align: center;
 }
 
 /* Labels */
@@ -86,7 +95,7 @@ label {
 
 /* Inputs */
 input {
-  height: 10%;
+  height: 16px;
   width: 100%;
   max-width: 350px;
   padding: 12px;
@@ -95,10 +104,8 @@ input {
   background: #cfcfcf;
   box-shadow: inset 0px 0px 30px #38383880;
   font-size: 1rem;
-  margin-bottom: 35px;
   color: #303030;
   font-weight: 600;
-  
 }
 
 input:focus {
@@ -116,7 +123,7 @@ button {
   padding: 12px;
   border: none;
   border-radius: 26px;
-  background: #d5d5d5;
+  background: #baffba;
   color: #121212;
   font-size: 1rem;
   font-weight: bold;
@@ -125,11 +132,13 @@ button {
 }
 
 form {
+  width: 100%;
   align-content: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px; /* Ensures buttons fit properly */
 }
 
 button:hover {
@@ -138,45 +147,33 @@ button:hover {
   color: #d5d5d5;
 }
 
+.buttonTwitch {
+  background: #d1baff;
+}
+.buttonTwitch:hover {
+  background: #6441A4;
+  box-shadow: 0px 00px 50px #5900ff;
+  color: #d5d5d5;
+}
 
 .divider {
   display: flex;
   align-items: center;
   margin: 20px 0;
   width: 100%;
-  height: 100%;
+  height: 2px;
   background-color: black;
 }
 
-
-
-
-
-
-
-/* ------------- */
-
-
-@keyframes glowBlink {
-  0% { text-shadow: 0px 0px 20px #00ff00cc; }
-  50% { text-shadow: 0px 0px 5px #00ff004d; }
-  100% { text-shadow: 0px 0px 20px #00ff00cc; }
-}
 /* Message Box */
 .successMessage {
   color: #3bc366;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 15px;
-  animation: glowBlink 1s infinite alternate; /* Apply animation */
+  animation: glowBlink 1s infinite alternate;
 }
 
-
-@keyframes glowBlinkError {
-  0% { text-shadow: 0px 0px 20px #ff0000cc; }
-  50% { text-shadow: 0px 0px 5px #ff00004d; }
-  100% { text-shadow: 0px 0px 20px #ff0000cc; }
-}
 .errorMessage {
   color: #c33b3b;
   font-size: 1rem;
@@ -184,5 +181,3 @@ button:hover {
   margin-bottom: 15px;
   animation: glowBlinkError 1s infinite alternate;
 }
-
-

@@ -11,8 +11,8 @@ body {
   border-radius: 29px;
   height: 70vh;
   width: 100vh;
-  background-color: #d5d5d5;
   background-image: url('../../assets/landing-picture.jpg');
+  
 }
 
 .videoBackground {
@@ -27,20 +27,22 @@ body {
 /* Two-Column Profile Box */
 .profileBox {
   display: flex;
-  flex-direction: column;
-  width: 400px;
+  flex-direction: row;
+  width: auto;
   height: auto;
   border-radius: 29px;
   overflow: hidden;
   box-shadow: 0px 10px 30px #00000080;
-  background: #222;
-  padding: 20px;
+  background: #1b1b1b4d;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   align-items: center;
   justify-content: center;
 }
 
 /* Title Box */
 .profileBox h2 {
+  
   font-size: 2rem;
   color: #d3d3d3;
   text-align: center;
@@ -50,15 +52,18 @@ body {
 
 /* Left-side Branding/Visual */
 .visual {
-  width: 100%;
-  height: 100vh;
+  width: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #1b1b1b4d;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .brand {
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #21e065;
   text-shadow: 0px 05px 40px #1ED760;
@@ -68,44 +73,39 @@ body {
 /* Right-side Profile Form */
 .formWrapper {
   width: 100%;
+  max-width: 450px;
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 30px;
-  gap: 15px; /* Ensures spacing between buttons and inputs */
+  padding-bottom: 30px;
+  gap: 10px;
 }
 
 .formWrapper h2 {
-  font-size: 2rem;
-  color: #d3d3d3;
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
 }
 
 /* Labels */
 label {
-  width: 100%;
-  color: #d5d5d5;
+  text-align: start;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: -10px;
 }
 
 /* Inputs */
 input {
   height: 16px;
-  width: 100%;
-  max-width: 350px;
   padding: 12px;
   border: none;
   border-radius: 13px;
-  background: #cfcfcf;
   box-shadow: inset 0px 0px 30px #38383880;
   font-size: 1rem;
-  color: #303030;
   font-weight: 600;
+  box-shadow: 05px 08px 25px #111111;
 }
 
 input:focus {
@@ -121,6 +121,7 @@ input:focus {
 button {
   width: 100%;
   padding: 12px;
+  box-shadow: 05px 08px 25px #111111;
   border: none;
   border-radius: 26px;
   background: #baffba;
@@ -129,16 +130,17 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  
 }
 
 form {
-  width: 100%;
-  align-content: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 15px; /* Ensures buttons fit properly */
+  align-self: center;
+  align-content: center;
+  gap: 15px;
+
 }
 
 button:hover {
@@ -151,7 +153,7 @@ button:hover {
   background: #d1baff;
 }
 .buttonTwitch:hover {
-  background: #6441A4;
+  background: #8354d9;
   box-shadow: 0px 00px 50px #5900ff;
   color: #d5d5d5;
 }
@@ -163,6 +165,7 @@ button:hover {
   width: 100%;
   height: 2px;
   background-color: black;
+
 }
 
 /* Message Box */
@@ -180,4 +183,62 @@ button:hover {
   font-weight: 600;
   margin-bottom: 15px;
   animation: glowBlinkError 1s infinite alternate;
+}
+
+.imagePreview {
+  margin-top: 15px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px none #040404;
+  box-shadow: 05px 08px 25px #111111;
+}
+
+
+.emailUpload {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  gap: 15px; 
+  display: flex;
+  flex-direction: row;
+}
+
+.emailUpload input[type="email"] {
+  flex-grow: 1;
+  width: 100%;
+  
+}
+
+.fileUpload {
+  background: #383838;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  width: auto;
+  min-width: 40px;
+  height: auto;
+  margin-bottom: auto;
+  box-shadow: 05px 08px 25px #111111;
+}
+
+.fileUpload:hover {
+  background: #21e065;
+  box-shadow: 0px 5px 20px #1ED760;
+  color: #121212;
+}
+
+.hiddenFileInput {
+  display: none; /* Hide the default file input */
 }

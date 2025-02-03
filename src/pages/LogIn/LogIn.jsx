@@ -12,7 +12,7 @@ import * as authService from '../../services/authService'
 import styles from './LogIn.module.css'
 
 
-const LoginPage = ({ handleAuthEvt }) => {
+const LogIn = ({ handleAuthEvt }) => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
   const [formData, setFormData] = useState({
@@ -82,4 +82,4 @@ const LoginPage = ({ handleAuthEvt }) => {
   )
 }
 
-export default LoginPage
+export default LogIn

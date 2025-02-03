@@ -28,7 +28,7 @@ const NavBar = ({ user, handleLogout, weather }) => {
         <NavLink to="/auth/logout" onClick={handleLogout}>LOG OUT</NavLink>
       </li>
 
-      
+
       {/* {weather.weather && 
         <li>
           <WeatherInfo weather={weather} />

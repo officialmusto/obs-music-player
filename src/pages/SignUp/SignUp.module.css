@@ -137,13 +137,34 @@ button:hover {
   color: #d5d5d5;
 }
 
+
+
+@keyframes glowBlink {
+  0% { text-shadow: 0px 0px 20px #00ff00cc; } /* Bright glow */
+  50% { text-shadow: 0px 0px 5px #00ff004d; }  /* Dim glow */
+  100% { text-shadow: 0px 0px 20px #00ff00cc; } /* Bright glow */
+}
 /* Message Box */
-.message {
+.successMessage {
   color: #3bc366;
   font-size: 1rem;
-  text-shadow: 0px 0px 20px #0ad44a80;
   font-weight: 600;
   margin-bottom: 15px;
+  animation: glowBlink 1s infinite alternate; /* Apply animation */
+}
+
+
+@keyframes glowBlinkError {
+  0% { text-shadow: 0px 0px 20px #ff0000cc; }
+  50% { text-shadow: 0px 0px 5px #ff00004d; }
+  100% { text-shadow: 0px 0px 20px #ff0000cc; }
+}
+.errorMessage {
+  color: #c33b3b;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  animation: glowBlinkError 1s infinite alternate;
 }
 
 

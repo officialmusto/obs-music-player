@@ -139,8 +139,10 @@ button:hover {
 
 /* Message Box */
 .message {
-  color: #ff5555;
+  color: #3bc366;
   font-size: 1rem;
+  text-shadow: 0px 0px 20px #0ad44a80;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 

@@ -10,7 +10,6 @@ import './App.css'
 // PAGES
 import Landing from './pages/Landing/Landing'
 
-
 function App() {
 
   return (

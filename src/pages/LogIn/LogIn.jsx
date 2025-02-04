@@ -71,7 +71,10 @@ const LogIn = ({ handleAuthEvt }) => {
       <video autoPlay loop muted className={styles.videoBackground}>
         <source src={backgroundVideoUrl} type="video/mp4" />
       </video>
-      <section>
+      <section className={styles.logInBox}>
+        <div className={styles.visual}>
+          <h1 className={styles.brand}>OBS Music Player</h1>
+        </div>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <h1 className={styles.title}>Log In</h1>
           <p>{message}</p>
@@ -96,7 +99,7 @@ const LogIn = ({ handleAuthEvt }) => {
           </label>
           </div>
           <div>
-          <button type="submit" disabled={loading}>{loading ? "Creating..." : "Log In"}</button>
+          <button className={styles.logInButton} type="submit" disabled={loading}>{loading ? "Creating..." : "Log In"}</button>
             <Link to="/">CANCEL</Link>
           </div>
             <div className={styles.twitchSection}>

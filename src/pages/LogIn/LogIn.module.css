@@ -16,6 +16,7 @@
 section {
   height: auto;
   display: flex;
+
   justify-content: center;
   align-content: center;
   align-self: center;
@@ -33,27 +34,13 @@ div {
   width: 80%;
 }
 
-form {
-
-  gap: 10px; /* ✅ Adds spacing between inputs */
-}
-
-
-
-
-
-.loginBox {
-  display: flex;
-  flex-direction: column; /* ✅ Stack elements vertically */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 400px; /* ✅ Ensures it doesn’t stretch too much */
+.logInBox {
+  flex-direction: row;
   border-radius: 29px;
-  overflow: hidden;
   background: #1b1b1b99;
   backdrop-filter: blur(20px);
   padding: 30px;
+  height: 100%;
 }
 
 
@@ -68,14 +55,22 @@ form {
   margin-bottom: 15px;
 }
 
+.brand {
+  
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #21e065;
+  text-shadow: 0px 5px 30px #1ED760;
+}
+
 /* Labels and Inputs */
 label {
-
-
   color: #d5d5d5;
   font-size: 1.1rem;
   font-weight: 600;
-
 }
 
 input {
@@ -95,7 +90,10 @@ input {
 
 
 /* Buttons */
-button {
+.logInButton {
+
+  margin-top: 40px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 26px;
   background: #d6d6d6;

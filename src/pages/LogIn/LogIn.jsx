@@ -8,6 +8,7 @@ import * as authService from '../../services/authService'
 import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
 
 // ASSETS
+import backgroundVideoUrl from '/assets/video-signup.mp4'
 
 // CSS
 import styles from './LogIn.module.css'
@@ -65,12 +66,15 @@ const LogIn = ({ handleAuthEvt }) => {
 
   return (
     <main className={styles.container}>
-      <section>
-      </section>
+      {/* Background Video */}
+      <video autoPlay loop muted className={styles.videoBackground}>
+        <source src={backgroundVideoUrl} type="video/mp4" />
+      </video>
       <section>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <h1>Log In</h1>
           <p>{message}</p>
+          <div>
           <label>
             Email
             <input
@@ -89,12 +93,16 @@ const LogIn = ({ handleAuthEvt }) => {
               onChange={handleChange}
             />
           </label>
+          </div>
           <div>
             <button disabled={isFormInvalid()}>LOG IN</button>
             <Link to="/">CANCEL</Link>
           </div>
+            <div className={styles.twitchSection}>
+              <p><strong>OR</strong></p>
+              <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Log In with Twitch</button>
+            </div>
         </form>
-        <button onClick={loginWithTwitch}>Login with Twitch</button>
       </section>
     </main>
   )

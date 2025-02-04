@@ -118,12 +118,12 @@ const CreateProfile = () => {
               {formData.photo && <img src={formData.photo} alt="Profile Preview" className={styles.imagePreview} />}
 
               <button type="submit" disabled={loading}>{loading ? "Creating..." : "Create Profile"}</button>
-            </form>
-
             <div className={styles.twitchSection}>
               <p><strong>OR</strong></p>
               <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
             </div>
+            </form>
+
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@
 
 // --- IMPORTS ---
 import React from 'react'
+import backgroundVideoUrl from '/assets/video-signup.mp4'
 
 
 // --- COMPONENTS ---
@@ -20,6 +21,9 @@ import styles from './Landing.module.css'
 const Landing = () => {
   return (
     <>
+    <video autoPlay loop muted className={styles.videoBackground}>
+      <source src={backgroundVideoUrl} type="video/mp4" />
+    </video>
     <div className={styles.title}>Landing Page.</div>
     </>
   )

@@ -178,3 +178,13 @@ label.fileUpload {
 .hiddenFileInput {
   display: none;
 }
+
+@media screen {
+  
+  .profileBox {
+    flex-direction: column;
+  }
+
+
+
+}

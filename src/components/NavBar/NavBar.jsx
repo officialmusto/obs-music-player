@@ -1,9 +1,11 @@
 // NPM MODULES
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import * as authService from '../../services/authService'
 
 // ASSETS
 import styles from './NavBar.module.css'
-import logo from '/assets/favicon.png'
+import favicon from '/assets/favicon.png'
 
 // components
 
@@ -12,14 +14,24 @@ import logo from '/assets/favicon.png'
 // import WeatherInfo from '../WeatherInfo/WeatherInfo'
 
 
-const NavBar = ({ user, handleLogout, weather }) => {
+
+
+
+
+
+const NavBar = ({handleAuthEvt}) => {
+  const [isAuthenticated, setIsAutheticated] = useState(false)
   
-  const publicLinks = (
-    <ul>
-      <li><NavLink to="/auth/login">LOG IN</NavLink></li>
-      <li><NavLink to="/auth/signup">SIGN UP</NavLink></li>
-    </ul>
-  )
+  const user = authService.getUser()
+  useEffect(() => {
+    setIsAutheticated(!!user)
+  })
+
+  const handleLogout = () => {
+    authService.logout
+    setIsAutheticated(false)
+    handleAuthEvt()
+  }
 
   const protectedLinks = (
     <ul>
@@ -39,8 +51,21 @@ const NavBar = ({ user, handleLogout, weather }) => {
 
   return (
     <nav className={styles.container}>
-      <NavLink to="/"><img src={logo} alt="A cute owl" /></NavLink>
-      {user ? protectedLinks : publicLinks}
+      <img src={favicon} alt="obs-music-player-logo" />
+      <ul>
+
+        {isAuthenticated ? (
+          <>
+            <li><Link to="/">Home</Link></li>
+            <li><button onClick={handleLogout}>Log Out</button></li>
+          </>
+        ) : (
+          <>
+            <li><Link to="/auth/login">Log In</Link></li>
+            <li><Link to="/auth/signup">Sign Up</Link></li>
+          </>
+        )}
+      </ul>
     </nav>
   )
 }

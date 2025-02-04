@@ -13,6 +13,7 @@ import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons"
 const CreateProfile = () => {
   const [formData, setFormData] = useState({
     name: "",
+    password: "",
     email: "",
     photo: "",
   })
@@ -105,6 +106,9 @@ const CreateProfile = () => {
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
 
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+
               <label htmlFor="email">Email:</label>
               <div className={styles.emailUpload}>
                 <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
@@ -120,7 +124,7 @@ const CreateProfile = () => {
               <button type="submit" disabled={loading}>{loading ? "Creating..." : "Create Profile"}</button>
             <div className={styles.twitchSection}>
               <p><strong>OR</strong></p>
-              <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
+              <button disabled={true} className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
             </div>
             </form>
 

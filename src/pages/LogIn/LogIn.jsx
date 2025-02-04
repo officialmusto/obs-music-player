@@ -44,8 +44,8 @@ const LogIn = ({ handleAuthEvt }) => {
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-      if (!import.meta.env.VITE_BACK_END_SERVER_URL) {
-        throw new Error('No VITE_BACK_END_SERVER_URL in front-end .env')
+      if (!import.meta.env.VITE_BACKEND_SERVER_URL) {
+        throw new Error('No VITE_BACKEND_SERVER_URL in front-end .env')
       }
       await authService.login(formData)
       handleAuthEvt()

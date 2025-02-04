@@ -9,7 +9,7 @@ export const createProfile = async (profileData, token) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${tokenService.getToken()}`
     },
     body: JSON.stringify(profileData)
   })

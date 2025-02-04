@@ -27,7 +27,7 @@
   border-radius: 29px;
   overflow: hidden;
   background: rgba(27, 27, 27, 0.6);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   padding: 30px;
 }
 
@@ -40,6 +40,7 @@
 }
 
 .brand {
+  text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
   color: #21e065;
@@ -69,13 +70,19 @@ form {
 /* Inputs */
 input {
   width: 100%;
-  height: 10%;
-  padding: 10px;
+  min-height: 40px; /* Ensures input is not too small */
+  padding: 12px; /* Gives enough space for text */
   border-radius: 10px;
-  background: #0000001a;
+  background: #ffffff1a;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.1); /* Softer shadow */
   font-size: 1rem;
   color: #fff;
   transition: 0.3s;
+}
+
+
+input {
+  margin: 0 auto;
 }
 
 input:focus {
@@ -98,7 +105,7 @@ button {
   margin: 20px;
   padding: 12px;
   border-radius: 26px;
-  background: #baffba;
+  background: #d0d0d0;
   color: #121212;
   font-weight: bold;
   transition: 0.3s;
@@ -129,20 +136,14 @@ button.buttonTwitch:hover {
   align-content: center;
 }
 
-input {
-  margin: 0 auto;
-}
 
 .emailUpload {
-  margin-bottom: 10px;
-  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  align-content: center;
+  flex-direction: row; /* Stack input & file upload */
+  width: 100%;
+  gap: 10px; /* Space between elements */
 }
+
 
 label {
     margin-top: 30px;
@@ -153,10 +154,10 @@ label.fileUpload {
   margin-left: 15px;
   width: 19%;
   padding: 18px;
-  background-color: #111111;
+  background: rgb(34, 34, 34);
+  backdrop-filter: blur(20px);
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   align-self: center;

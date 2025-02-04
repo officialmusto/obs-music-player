@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 // ASSETS
 import styles from './NavBar.module.css'
-import logo from '../../assets/favicon.png'
+import logo from '/assets/favicon.png'
 
 // components
 

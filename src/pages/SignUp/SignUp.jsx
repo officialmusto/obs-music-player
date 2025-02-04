@@ -1,83 +1,83 @@
-import { useState } from "react";
-import { createProfile } from "../../services/profileService";
-import { loginWithTwitch } from "../../services/twitchService";
-import styles from "./SignUp.module.css";
+import { useState } from "react"
+import { createProfile } from "../../services/profileService"
+import { loginWithTwitch } from "../../services/twitchService"
+import styles from "./SignUp.module.css"
 
 // Use correct video import
-const backgroundVideoUrl = "/assets/video-signup.mp4"; // If in public/assets/
+const backgroundVideoUrl = "/assets/video-signup.mp4"
 
 // FONT AWESOME ICONS
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 const CreateProfile = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     photo: "",
-  });
+  })
 
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [message, setMessage] = useState("")
+  const [messageType, setMessageType] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+    const file = e.target.files[0]
+    if (!file) return
 
-    const validTypes = ["image/png", "image/jpeg", "image/jpg"];
+    const validTypes = ["image/png", "image/jpeg", "image/jpg"]
     if (!validTypes.includes(file.type)) {
-      setMessage("⚠️ Only PNG, JPEG, and JPG files are allowed.");
-      setMessageType("error");
-      return;
+      setMessage("⚠️ Only PNG, JPEG, and JPG files are allowed.")
+      setMessageType("error")
+      return
     }
 
-    setSelectedFile(file);
-    const fileReader = new FileReader();
+    setSelectedFile(file)
+    const fileReader = new FileReader()
     fileReader.onloadend = () => {
-      setFormData((prevData) => ({ ...prevData, photo: fileReader.result }));
-    };
-    fileReader.readAsDataURL(file);
-  };
+      setFormData((prevData) => ({ ...prevData, photo: fileReader.result }))
+    }
+    fileReader.readAsDataURL(file)
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormData((prevData) => ({ ...prevData, [name]: value }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
+    e.preventDefault()
+    if (!formData.name || !formData.email) return
 
-    setLoading(true);
-    setMessage("");
-    setMessageType("");
+    setLoading(true)
+    setMessage("")
+    setMessageType("")
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await createProfile(formData, token);
+      const token = localStorage.getItem("token")
+      const response = await createProfile(formData, token)
 
       if (response.error) {
-        setMessage(`❌ ${response.error}`);
-        setMessageType("error");
+        setMessage(`❌ ${response.error}`)
+        setMessageType("error")
       } else {
-        setMessage("✅ Profile created successfully!");
-        setMessageType("success");
-        setFormData({ name: "", email: "", photo: "" });
-        setSelectedFile(null);
+        setMessage("✅ Profile created successfully!")
+        setMessageType("success")
+        setFormData({ name: "", email: "", photo: "" })
+        setSelectedFile(null)
       }
     } catch (error) {
-      setMessage("⚠️ An error occurred. Please try again.");
-      setMessageType("error");
+      setMessage("⚠️ An error occurred. Please try again.")
+      setMessageType("error")
     } finally {
-      setLoading(false);
+      setLoading(false)
       setTimeout(() => {
-        setMessage("");
-        setMessageType("");
-      }, 3000);
+        setMessage("")
+        setMessageType("")
+      }, 3000)
     }
-  };
+  }
 
   return (
     <>
@@ -128,7 +128,7 @@ const CreateProfile = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CreateProfile;
+export default CreateProfile

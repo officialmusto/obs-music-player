@@ -11,38 +11,38 @@
 }
 
 
+
+
 /* Profile Box */
 .profileBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
   border-radius: 29px;
-  overflow: hidden;
   background: #1b1b1b99;
   backdrop-filter: blur(20px);
   padding: 30px;
+  height: 100%;
+}
+
+.visual {
+
 }
 
 /* Branding */
-.visual {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .brand {
+  margin: 0 auto;
+  padding: 0 auto;
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
   color: #21e065;
-  text-shadow: 0px 5px 40px #1ED760;
+  text-shadow: 0px 5px 30px #1ED760;
 }
 
+
+
+
 form {
-  margin-bottom: 20px;
+  margin: 0 auto;
+  padding: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,9 +53,7 @@ form {
 
 /* Form Wrapper */
 .formWrapper {
-  flex: 2;
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 20px;
   width: 100%;
@@ -66,7 +64,6 @@ input {
   width: 100%;
   font-size: 10px;
   min-height: 40px; /* Ensures input is not too small */
-  padding: 12px; /* Gives enough space for text */
   border-radius: 10px;
   background: #ffffff1a;
   box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.1); /* Softer shadow */
@@ -97,8 +94,6 @@ input:focus {
 /* Buttons */
 button {
   width: 100%;
-  margin: 20px;
-  padding: 12px;
   border-radius: 26px;
   background: #d0d0d0;
   color: #121212;
@@ -108,6 +103,7 @@ button {
 
 button:hover {
   background: #21e065;
+  box-shadow: #21e065;
   color: #d5d5d5;
 }
 
@@ -117,8 +113,8 @@ button.buttonTwitch {
   color: #d5d5d5;
 }
 button.buttonTwitch:hover {
-  background: #6121d7;
-  box-shadow: 0px 0px 10px 8px #5f0bde;
+  background: #a36cf4;
+  box-shadow: 0px 0px 10px 8px #a36cf4;
 
 }
 
@@ -135,9 +131,14 @@ button.buttonTwitch:hover {
 
 .emailUpload {
   display: flex;
-  flex-direction: row; /* Stack input & file upload */
+  flex-direction: row;
   width: 100%;
-  gap: 10px; /* Space between elements */
+  gap: 10px;
+}
+
+strong {
+  margin: 0 auto;
+  padding: 0 auto;
 }
 
 
@@ -148,7 +149,7 @@ label {
 label.fileUpload {
   cursor: pointer;
   margin: 0;
-  margin-left: 15px;
+
   width: 19%;
   padding: 18px;
   background: rgb(34, 34, 34);
@@ -179,12 +180,49 @@ label.fileUpload {
   display: none;
 }
 
-@media screen {
-  
+@media screen and (max-width: 1700) {
   .profileBox {
     flex-direction: column;
   }
-
-
-
 }
+
+
+@media screen and (max-width: 1200px) {
+
+
+
+  form {
+    justify-content: center;
+  }
+
+  .formWrapper {
+    height: auto;
+  }
+
+
+  .profileBox {
+    height: 60%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  label {
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+
+  .fileUpload {
+    margin: 0 auto;
+  }
+
+  .emailUpload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    width: 50%;
+  }
+}
+

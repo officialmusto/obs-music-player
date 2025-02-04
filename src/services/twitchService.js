@@ -5,10 +5,12 @@ const TWITCH_REDIRECT_URI = import.meta.env.VITE_TWITCH_REDIRECT_URI
  * Redirects user to Twitch OAuth using Implicit Grant Flow
  */
 export const loginWithTwitch = () => {
-  const twitchAuthUrl = `https://id.twitch.tv/oauth2/authorize?client_id=${TWITCH_CLIENT_ID}&redirect_uri=${encodeURIComponent(TWITCH_REDIRECT_URI)}&response_type=token&scope=user:read:email`
+  const twitchAuthUrl = `https://id.twitch.tv/oauth2/authorize?client_id=${TWITCH_CLIENT_ID}&redirect_uri=${encodeURIComponent(TWITCH_REDIRECT_URI)}&response_type=code&scope=user:read:email`
 
   window.location.href = twitchAuthUrl // Redirect user to Twitch
 }
+
+
 
 /**
  * Extracts access token from URL after Twitch redirects back
@@ -22,8 +24,12 @@ export const getTwitchAccessToken = () => {
 /**
  * Fetch Twitch user data using the access token
  */
-export const getTwitchUserData = async () => {
-  const accessToken = getTwitchAccessToken()
+export const getTwitchUserData = async (accessToken) => {
+  if (!accessToken) {
+    console.error("❌ No Twitch access token found")
+    return null
+  }
+
 
   if (!accessToken) {
     console.error("No Twitch access token found")

@@ -6,18 +6,13 @@ import * as authService from '../../services/authService'
 // ASSETS
 import styles from './NavBar.module.css'
 import favicon from '/assets/favicon.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // components
 
 
 // WEATHER INFORMATION SOON
 // import WeatherInfo from '../WeatherInfo/WeatherInfo'
-
-
-
-
-
-
 
 const NavBar = ({handleAuthEvt}) => {
   const [isAuthenticated, setIsAutheticated] = useState(false)
@@ -50,13 +45,14 @@ const NavBar = ({handleAuthEvt}) => {
   )
 
   return (
+    
     <nav className={styles.container}>
       <img src={favicon} alt="obs-music-player-logo" />
       <ul>
 
         {isAuthenticated ? (
           <>
-            <li><Link to="/">Home</Link></li>
+            <FontAwesomeIcon icon="fa-solid fa-house" size="2x" />
             <li><button onClick={handleLogout}>Log Out</button></li>
           </>
         ) : (

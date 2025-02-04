@@ -17,6 +17,7 @@ import styles from './LogIn.module.css'
 const LogIn = ({ handleAuthEvt }) => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -72,7 +73,7 @@ const LogIn = ({ handleAuthEvt }) => {
       </video>
       <section>
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <h1>Log In</h1>
+          <h1 className={styles.title}>Log In</h1>
           <p>{message}</p>
           <div>
           <label>
@@ -95,7 +96,7 @@ const LogIn = ({ handleAuthEvt }) => {
           </label>
           </div>
           <div>
-            <button disabled={isFormInvalid()}>LOG IN</button>
+          <button type="submit" disabled={loading}>{loading ? "Creating..." : "Log In"}</button>
             <Link to="/">CANCEL</Link>
           </div>
             <div className={styles.twitchSection}>

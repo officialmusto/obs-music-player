@@ -1,16 +1,21 @@
-import { useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { createProfile } from "../../services/profileService"
-import { loginWithTwitch } from "../../services/twitchService"
+import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
 import styles from "./SignUp.module.css"
 
-// Use correct video import
+//video import
 const backgroundVideoUrl = "/assets/video-signup.mp4"
 
-// FONT AWESOME ICONS
+// font awesome icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 const CreateProfile = () => {
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [message, setMessage] = useState("")
+  const [messageType, setMessageType] = useState("")
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -18,11 +23,67 @@ const CreateProfile = () => {
     photo: "",
   })
 
-  const [selectedFile, setSelectedFile] = useState(null)
-  const [message, setMessage] = useState("")
-  const [messageType, setMessageType] = useState("")
-  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
+  useEffect(() => {
+    const handleTwitchAuth = async () => {
+      const queryParams = new URLSearchParams(location.search)
+      const code = queryParams.get("code")
+  
+      if (code) {
+        setMessage("🔄 Authenticating with Twitch...")
+  
+        try {
+          console.log("🔥 Fetching Twitch access token with code:", code)  // Debugging log
+          const response = await fetch(`http://localhost:5000/auth/twitch/callback?code=${code}`)
+          const data = await response.json()
+          console.log("✅ Twitch OAuth Response:", data) // Debugging log
+  
+          if (!data.access_token) {
+            setMessage("❌ Twitch authentication failed")
+            return
+          }
+  
+          console.log("🔥 Fetching Twitch user data...")
+          const userData = await getTwitchUserData(data.access_token)
+          console.log("✅ Twitch User Data:", userData) // Debugging log
+  
+          if (userData) {
+            const newProfile = {
+              name: userData.display_name,
+              email: userData.email,
+              photo: userData.profile_image_url,
+              password: userData.id,
+            }
+  
+            console.log("🔥 Sending profile data to backend:", newProfile) // Debugging log
+            const createResponse = await createProfile(newProfile)
+            console.log("✅ Backend Response:", createResponse) // Debugging log
+  
+            if (createResponse.error) {
+              setMessage(`❌ ${createResponse.error}`)
+              setMessageType("error")
+            } else {
+              setMessage("✅ Profile created successfully!")
+              setMessageType("success")
+              navigate("/dashboard") // Redirect after success
+            }
+          }
+        } catch (error) {
+          console.error("❌ Error during Twitch authentication:", error)
+          setMessage("❌ Authentication failed")
+        }
+      }
+    }
+  
+    handleTwitchAuth()
+  }, [location, navigate])
+  
+  
+
+  
+  
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if (!file) return
@@ -124,7 +185,7 @@ const CreateProfile = () => {
               <button type="submit" disabled={loading}>{loading ? "Creating..." : "Create Profile"}</button>
             <div className={styles.twitchSection}>
               <p><strong>OR</strong></p>
-              <button disabled={true} className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
+              <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Sign Up with Twitch</button>
             </div>
             </form>
 

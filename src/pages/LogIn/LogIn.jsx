@@ -8,6 +8,7 @@ import * as authService from '../../services/authService'
 import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
 
 // ASSETS
+import backgroundVideoUrl from '/assets/video-signup.mp4'
 
 // CSS
 import styles from './LogIn.module.css'
@@ -16,6 +17,7 @@ import styles from './LogIn.module.css'
 const LogIn = ({ handleAuthEvt }) => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -43,8 +45,8 @@ const LogIn = ({ handleAuthEvt }) => {
   const handleSubmit = async evt => {
     evt.preventDefault()
     try {
-      if (!import.meta.env.VITE_BACK_END_SERVER_URL) {
-        throw new Error('No VITE_BACK_END_SERVER_URL in front-end .env')
+      if (!import.meta.env.VITE_BACKEND_SERVER_URL) {
+        throw new Error('No VITE_BACKEND_SERVER_URL in front-end .env')
       }
       await authService.login(formData)
       handleAuthEvt()
@@ -65,12 +67,18 @@ const LogIn = ({ handleAuthEvt }) => {
 
   return (
     <main className={styles.container}>
-      <section>
-      </section>
-      <section>
+      {/* Background Video */}
+      <video autoPlay loop muted className={styles.videoBackground}>
+        <source src={backgroundVideoUrl} type="video/mp4" />
+      </video>
+      <section className={styles.logInBox}>
+        <div className={styles.visual}>
+          <h1 className={styles.brand}>OBS Music Player</h1>
+        </div>
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <h1>Log In</h1>
+          <h1 className={styles.title}>Log In</h1>
           <p>{message}</p>
+          <div>
           <label>
             Email
             <input
@@ -89,12 +97,16 @@ const LogIn = ({ handleAuthEvt }) => {
               onChange={handleChange}
             />
           </label>
+          </div>
           <div>
-            <button disabled={isFormInvalid()}>LOG IN</button>
+          <button className={styles.logInButton} type="submit" disabled={loading}>{loading ? "Creating..." : "Log In"}</button>
             <Link to="/">CANCEL</Link>
           </div>
+            <div className={styles.twitchSection}>
+              <p><strong>OR</strong></p>
+              <button className={styles.buttonTwitch} onClick={loginWithTwitch}>Log In with Twitch</button>
+            </div>
         </form>
-        <button onClick={loginWithTwitch}>Login with Twitch</button>
       </section>
     </main>
   )

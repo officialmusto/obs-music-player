@@ -5,6 +5,7 @@
 import React from 'react'
 
 
+
 // --- COMPONENTS ---
 
 
@@ -20,6 +21,8 @@ import styles from './Landing.module.css'
 const Landing = () => {
   return (
     <>
+    <video autoPlay loop muted className={styles.videoBackground}>
+    </video>
     <div className={styles.title}>Landing Page.</div>
     </>
   )

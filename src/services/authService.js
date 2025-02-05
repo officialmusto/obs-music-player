@@ -1,6 +1,6 @@
 import * as tokenService from './tokenService'
 
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth`
+const BASE_URL = `${import.meta.env.VITE_BACKEND_SERVER_URL}/api/auth`
 
 async function signup(signupFormData, photoData) {
   try {

@@ -1,4 +1,3 @@
-import { useNavigate, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { createProfile } from "../../services/profileService"
 import { loginWithTwitch, getTwitchUserData } from "../../services/twitchService"
@@ -23,63 +22,6 @@ const CreateProfile = () => {
     photo: "",
   })
 
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  useEffect(() => {
-    const handleTwitchAuth = async () => {
-      const queryParams = new URLSearchParams(location.search)
-      const code = queryParams.get("code")
-  
-      if (code) {
-        setMessage("🔄 Authenticating with Twitch...")
-  
-        try {
-          console.log("🔥 Fetching Twitch access token with code:", code)  // Debugging log
-          const response = await fetch(`http://localhost:5000/auth/twitch/callback?code=${code}`)
-          const data = await response.json()
-          console.log("✅ Twitch OAuth Response:", data) // Debugging log
-  
-          if (!data.access_token) {
-            setMessage("❌ Twitch authentication failed")
-            return
-          }
-  
-          console.log("🔥 Fetching Twitch user data...")
-          const userData = await getTwitchUserData(data.access_token)
-          console.log("✅ Twitch User Data:", userData) // Debugging log
-  
-          if (userData) {
-            const newProfile = {
-              name: userData.display_name,
-              email: userData.email,
-              photo: userData.profile_image_url,
-              password: userData.id,
-            }
-  
-            console.log("🔥 Sending profile data to backend:", newProfile) // Debugging log
-            const createResponse = await createProfile(newProfile)
-            console.log("✅ Backend Response:", createResponse) // Debugging log
-  
-            if (createResponse.error) {
-              setMessage(`❌ ${createResponse.error}`)
-              setMessageType("error")
-            } else {
-              setMessage("✅ Profile created successfully!")
-              setMessageType("success")
-              navigate("/dashboard") // Redirect after success
-            }
-          }
-        } catch (error) {
-          console.error("❌ Error during Twitch authentication:", error)
-          setMessage("❌ Authentication failed")
-        }
-      }
-    }
-  
-    handleTwitchAuth()
-  }, [location, navigate])
-  
   
 
   
@@ -126,7 +68,7 @@ const CreateProfile = () => {
       } else {
         setMessage("✅ Profile created successfully!")
         setMessageType("success")
-        setFormData({ name: "", email: "", photo: "" })
+        setFormData({ name: "", password: "", email: "", photo: "" })
         setSelectedFile(null)
       }
     } catch (error) {

@@ -37,7 +37,7 @@ async function createProfile(profileData) {
   try {
     console.log("🔥 Sending profile data to backend:", profileData)
 
-    const response = await fetch(`${BASE_URL}/create`, { // ✅ Correct Route
+    const response = await fetch(`${BASE_URL}/create`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
@@ -48,6 +48,7 @@ async function createProfile(profileData) {
 
     const result = await response.json()
     console.log("✅ Response from backend:", result)
+    res.redirect('/')
     return result
   } catch (error) {
     console.error("❌ Error creating profile:", error)

@@ -90,13 +90,9 @@ const CreateProfile = () => {
         <video autoPlay loop muted className={styles.videoBackground}>
           <source src={backgroundVideoUrl} type="video/mp4" />
         </video>
-
         <div className={styles.profileBox}>
-          <div className={styles.visual}>
             <h1 className={styles.brand}>OBS Music Player</h1>
-          </div>
-
-          <div className={styles.formWrapper}>
+            <form onSubmit={handleSubmit} className={styles.form}>
             <h2>Create Profile</h2>
 
             {message && (
@@ -105,7 +101,6 @@ const CreateProfile = () => {
               </p>
             )}
 
-            <form onSubmit={handleSubmit} className={styles.form}>
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
 
@@ -131,7 +126,7 @@ const CreateProfile = () => {
             </div>
             </form>
 
-          </div>
+
         </div>
       </div>
     </>

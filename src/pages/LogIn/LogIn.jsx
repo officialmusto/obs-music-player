@@ -71,12 +71,10 @@ const LogIn = ({ handleAuthEvt }) => {
       <video autoPlay loop muted className={styles.videoBackground}>
         <source src={backgroundVideoUrl} type="video/mp4" />
       </video>
-      <section className={styles.logInBox}>
-        <div className={styles.visual}>
+      <section className={styles.profileBox}>
           <h1 className={styles.brand}>OBS Music Player</h1>
-        </div>
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <h1 className={styles.title}>Log In</h1>
+        <h2>Log In</h2>
           <p>{message}</p>
           <div>
           <label>

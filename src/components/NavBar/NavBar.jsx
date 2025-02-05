@@ -47,7 +47,9 @@ const NavBar = ({handleAuthEvt}) => {
   return (
     
     <nav className={styles.container}>
+      <Link to="/">
       <img src={favicon} alt="obs-music-player-logo" />
+      </Link>
       <ul>
 
         {isAuthenticated ? (
